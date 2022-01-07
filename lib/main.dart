@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'malice.dart';
-import 'novice.dart';
 import 'nastavitve.dart';
 import 'domov.dart';
 import 'urnik.dart';
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _MyHomePageState(){
     _childrenWidgets.add(new DomovPage(data:data));
     _childrenWidgets.add(new MalicePage());
-    _childrenWidgets.add(new NovicePage(data:data));
+    
     _childrenWidgets.add(new UrnikPage(data: data));
     _childrenWidgets.add(new NastavitvePage(data: data));
   }
@@ -92,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
        // This trailing comma makes auto-formatting nicer for build methods.
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: data.izbranaSola.color ,
-        items: [BottomNavigationBarItem(icon: Icon(Icons.home),label: "Domov"),BottomNavigationBarItem(icon: Icon(Icons.food_bank),label: "Malice"),BottomNavigationBarItem(icon: Icon(Icons.article_outlined),label: "Novice"),BottomNavigationBarItem(icon: Icon(Icons.date_range_outlined),label: "Urnik"),BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Nastavitve")]
+        items: [BottomNavigationBarItem(icon: Icon(Icons.home),label: "Domov"),BottomNavigationBarItem(icon: Icon(Icons.food_bank),label: "Malice"),BottomNavigationBarItem(icon: Icon(Icons.date_range_outlined),label: "Urnik"),BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Nastavitve")]
         ,selectedItemColor: data.izbranaSola.color,
         unselectedItemColor: Colors.black,
         currentIndex: selectedIndex,
