@@ -5,6 +5,7 @@ import 'nastavitve.dart';
 import 'domov.dart';
 import 'urnik.dart';
 import 'data.dart';
+import 'isci.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +13,23 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    
+    return DarkLightTheme();
+  }
+}
+
+class DarkLightTheme extends StatefulWidget {
+  const DarkLightTheme({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  State<DarkLightTheme> createState() => _DarkLightThemeState();
+}
+
+class _DarkLightThemeState extends State<DarkLightTheme> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _MyHomePageState(){
     _childrenWidgets.add(new DomovPage(data:data));
     _childrenWidgets.add(new MalicePage());
-    
+    _childrenWidgets.add(new IsciPage());
     _childrenWidgets.add(new UrnikPage(data: data));
     _childrenWidgets.add(new NastavitvePage(data: data));
   }
@@ -90,10 +108,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _childrenWidgets[selectedIndex],
        // This trailing comma makes auto-formatting nicer for build methods.
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: data.izbranaSola.color ,
-        items: [BottomNavigationBarItem(icon: Icon(Icons.home),label: "Domov"),BottomNavigationBarItem(icon: Icon(Icons.food_bank),label: "Malice"),BottomNavigationBarItem(icon: Icon(Icons.date_range_outlined),label: "Urnik"),BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Nastavitve")]
-        ,selectedItemColor: data.izbranaSola.color,
+        backgroundColor: Colors.black.withOpacity(0.1), //here set your transparent level
+        elevation: 0,
+        selectedItemColor:  data.izbranaSola.color,
         unselectedItemColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        
+        items: [BottomNavigationBarItem(icon: Icon(Icons.home_rounded),label: "Domov"),BottomNavigationBarItem(icon: Icon(Icons.fastfood),label: "Malice"),BottomNavigationBarItem(icon: Icon(Icons.person_search),label: "Poišči osebe"),BottomNavigationBarItem(icon: Icon(Icons.calendar_today_rounded),label: "Urnik"),BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Nastavitve")]
+        ,//selectedItemColor: Colors.black,
+        //unselectedItemColor: Colors.black,
         currentIndex: selectedIndex,
         onTap: changeView,),
     );
